@@ -76,25 +76,28 @@ SaaS pessoal para gestão centralizada de até 10 projetos de vibecoding simult�
 ---
 
 ### FASE 3: Visualização Detalhada
-**Status:** ⏳ Aguardando  
-**Conclusão:** 0% (0/7 subtasks)
+**Status:** 🚧 Em Andamento  
+**Conclusão:** 43% (3/7 subtasks)
 
 **Objetivo:** Página de detalhes completa com roadmap faseado.
 
 **Subtasks:**
-- [ ] Página de detalhes do projeto (`/projects/[id]`)
-- [ ] Componente RoadmapView (lista de fases expandíveis)
-- [ ] Visualização de subtasks com checkboxes (read-only)
+- [x] Página de detalhes do projeto (`/projects/[id]`)
+- [x] Componente RoadmapView (lista de fases expandíveis)
+- [x] Visualização de subtasks com checkboxes (read-only)
 - [ ] Seção de notas rápidas (CRUD básico)
 - [ ] Componente de sugestão de próxima ação
 - [ ] Alerta visual para projetos parados >7 dias
 - [ ] Botão "Sync Now" para sincronização manual
 
 **Notas da Implementação:**
-*Nenhuma nota ainda - fase não iniciada*
+- Página de detalhes implementada com Layout Grid (2/3 Roadmap, 1/3 Sidebar)
+- Componente `RoadmapView` utilizando Accordion do shadcn/ui para renderizar fases aninhadas
 
 **Último trabalho realizado:**
-*Aguardando conclusão da FASE 2*
+- Criação estrutural da visualização de projeto
+- Próximo: Implementar Notas e Sincronização
+- Data última sessão: 2026-01-12
 
 **Critério de Sucesso:** Usuário visualiza roadmap completo, adiciona notas e recebe sugestão de próxima ação.
 
@@ -174,6 +177,19 @@ SaaS pessoal para gestão centralizada de até 10 projetos de vibecoding simult�
 ---
 
 ## Histórico de Sessões
+
+### Sessão 2026-01-12 (6)
+**Duração:** 15min  
+**Trabalho Realizado:**
+- Criação da estrutura de detalhes do projeto (Page + Components)
+- Componente `RoadmapView` com Accordion e Status Badges
+- Visualização de subtasks com checkboxes
+- Layout responsivo (Grid 2/3 + 1/3)
+
+**Próximos Passos:**
+- Implementar CRUD de Notas e Botão de Sync
+
+---
 
 ### Sessão 2026-01-12 (5)
 **Duração:** 15min  
@@ -371,5 +387,5 @@ O schema inclui:
 
 ---
 
-**Última Atualização:** 2026-01-12 às 17:09  
+**Última Atualização:** 2026-01-12 às 17:15  
 **Atualizado por:** J.A.R.V.I.S. (automated)
