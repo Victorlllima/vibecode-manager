@@ -107,18 +107,18 @@ SaaS pessoal para gestão centralizada de até 10 projetos de vibecoding simult�
 
 ### FASE 4: Sincronização Automática
 **Status:** 🚧 Em Andamento  
-**Conclusão:** 0% (0/7 subtasks)
+**Conclusão:** 42% (3/7 subtasks)
 
 **Objetivo:** Webhook do GitHub para atualização automática.
 
 **Subtasks:**
-- [ ] API route `/api/webhooks/github`
-- [ ] Validação de webhook signature (HMAC SHA256)
+- [x] API route `/api/webhooks/github`
+- [x] Validação de webhook signature (HMAC SHA256)
 - [ ] Configuração automática de webhook ao conectar projeto
 - [ ] Re-parsing de asbuilt.md ao receber push
 - [ ] Atualização automática de project/phases/subtasks
-- [ ] Log de webhooks (tabela `github_webhooks_log`)
-- [ ] Implementar botão "Sync Now" funcional
+- [x] Log de webhooks (tabela `github_webhooks_log`)
+- [ ] Implementar botão "Sync Now" funcional (Feature movida para FASE 3 e completa)
 
 **Notas da Implementação:**
 *Nenhuma nota ainda - fase não iniciada*
@@ -179,6 +179,18 @@ SaaS pessoal para gestão centralizada de até 10 projetos de vibecoding simult�
 ---
 
 ## Histórico de Sessões
+
+### Sessão 2026-01-12 (8)
+**Duração:** 10min  
+**Trabalho Realizado:**
+- Endpoint de recebimento de Webhook (`/api/webhooks/github`)
+- Validação de segurança com assinatura HMAC SHA256
+- Log de eventos de push no Supabase
+
+**Próximos Passos:**
+- Configurar webhook no GitHub e implementar lógica de re-parsing automática
+
+---
 
 ### Sessão 2026-01-12 (7)
 **Duração:** 15min  
@@ -406,5 +418,5 @@ O schema inclui:
 
 ---
 
-**Última Atualização:** 2026-01-12 às 17:29  
+**Última Atualização:** 2026-01-12 às 17:34  
 **Atualizado por:** J.A.R.V.I.S. (automated)
