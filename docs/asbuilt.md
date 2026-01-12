@@ -18,8 +18,8 @@ SaaS pessoal para gestão centralizada de até 10 projetos de vibecoding simult�
 ## Roadmap Completo
 
 ### FASE 1: Fundação (MVP Core)
-**Status:** 🚧 Em Andamento  
-**Conclusão:** 83% (5/6 subtasks)
+**Status:** ✅ Completa  
+**Conclusão:** 100% (6/6 subtasks)
 
 **Objetivo:** Sistema funcional básico com autenticação e visualização.
 
@@ -29,13 +29,14 @@ SaaS pessoal para gestão centralizada de até 10 projetos de vibecoding simult�
 - [x] Executar Schema SQL completo (tables + RLS policies)
 - [x] Implementar página de login (GitHub OAuth)
 - [x] Criar dashboard básico (lista vazia de projetos)
-- [ ] Componente ProjectCard com informações essenciais
+- [x] Componente ProjectCard com informações essenciais
 
 **Notas da Implementação:**
-- Login implementado com `@supabase/ssr` e Shadcn UI
-- Dashboard protegido com layout responsivo e redirect automático
-- Middleware configurado para gestão de sessões e proteção de rotas
-- Arquivo `supabase/schema.sql` criado
+- Autenticação implementada com Supabase SSR e Middleware de proteção de rotas
+- Login via GitHub OAuth configurado
+- Dashboard estruturado com Empty States e Header dinâmico
+- Componente `ProjectCard` criado com suporte a status visual de inatividade (>7 dias)
+- Arquivo `supabase/schema.sql` criado com definições completas de tables, RLS policies e triggers
 
 **Último trabalho realizado:**
 - Implementação completa do fluxo de autenticação (Login, Callback, Middleware, Logout)
@@ -171,18 +172,18 @@ SaaS pessoal para gestão centralizada de até 10 projetos de vibecoding simult�
 ## Histórico de Sessões
 
 ### Sessão 2026-01-12 (3)
-**Duração:** 15min  
+**Duração:** 30min  
 **Trabalho Realizado:**
 - Implementação de autenticação com Supabase SSR
 - Criação de `lib/supabase` (client, server, middleware)
 - Página de Login (`/login`) estilizada
-- Rota de Callback (`/auth/callback`) e Logout (`/auth/signout`)
 - Dashboard Layout e Page (Empty State)
+- Implementação completa do fluxo de Auth (Login/Middleware)
+- Criação do Dashboard e componente ProjectCard
 
 **Próximos Passos:**
-- Preencher variáveis de ambiente no `.env.local`
-- Criar Componente ProjectCard
-- Iniciar FASE 2
+- Iniciar FASE 2 (Conexão e Parsing)
+- Preencher variáveis de ambiente
 
 ---
 
@@ -333,5 +334,5 @@ O schema inclui:
 
 ---
 
-**Última Atualização:** 2026-01-12 às 16:32  
+**Última Atualização:** 2026-01-12 às 16:51  
 **Atualizado por:** J.A.R.V.I.S. (automated)
