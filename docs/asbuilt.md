@@ -132,16 +132,16 @@ SaaS pessoal para gestão centralizada de até 10 projetos de vibecoding simult�
 
 ### FASE 5: Polimento e UX
 **Status:** 🚧 Em Andamento  
-**Conclusão:** 28% (2/7 subtasks)
+**Conclusão:** 57% (4/7 subtasks)
 
 **Objetivo:** Melhorias visuais e experiência do usuário.
 
 **Subtasks:**
 - [x] Loading states (skeletons) em todas as páginas
-- [ ] Error handling global (toast notifications)
+- [x] Error handling global (toast notifications e error.tsx)
 - [ ] Animações suaves (framer-motion - opcional)
 - [ ] Responsividade mobile completa
-- [ ] Empty states informativos
+- [x] Empty states informativos (Dashboard e Notas)
 - [x] Confirmações de ação (deletar projeto, desconectar repo)
 - [ ] Dark mode (opcional)
 
@@ -179,6 +179,15 @@ SaaS pessoal para gestão centralizada de até 10 projetos de vibecoding simult�
 ---
 
 ## Histórico de Sessões
+
+### Sessão 2026-01-12 (12)
+**Duração:** 10min  
+**Trabalho Realizado:**
+- Error Boundary Global (`error.tsx`)
+- Página 404 Personalizada (`not-found.tsx`)
+- Refinamento visual de Empty States (Notas)
+
+---
 
 ### Sessão 2026-01-12 (11)
 **Duração:** 10min  
@@ -378,6 +387,8 @@ SaaS pessoal para gestão centralizada de até 10 projetos de vibecoding simult�
 
 ### UX/UI
 - **Loading:** Implementado sistema de Skeletons (`loading.tsx`) nativo do Next.js App Router para feedback visual instantâneo.
+- **Error Handling:** `error.tsx` (Global Boundary) e `not-found.tsx` para falhas graciosas.
+- **Empty States:** Feedback visual amigável quando não há dados (dashboard zerado, sem notas).
 - **Segurança:** Implementado `AlertDialog` para ações destrutivas (Disconnect Project), prevenindo perda acidental de dados.
 - **Framework UI:** Shadcn/ui para consistência e acessibilidade.
 

@@ -60,8 +60,16 @@ export function ProjectNotes({ projectId, notes }: ProjectNotesProps) {
 
             <ScrollArea className="flex-1 px-6">
                 {notes.length === 0 ? (
-                    <div className="text-sm text-muted-foreground text-center py-8 italic opacity-50">
-                        Nenhuma nota ainda.
+                    <div className="flex flex-col items-center justify-center h-full py-10 text-center space-y-3 opacity-60">
+                        <div className="bg-muted/50 p-3 rounded-full">
+                            <StickyNote className="w-8 h-8 text-muted-foreground" />
+                        </div>
+                        <div className="space-y-1">
+                            <p className="text-sm font-medium">Nenhuma nota ainda</p>
+                            <p className="text-xs text-muted-foreground max-w-[200px]">
+                                Capture ideias rápidas, links ou lembretes técnicos aqui.
+                            </p>
+                        </div>
                     </div>
                 ) : (
                     <div className="space-y-3 py-2">
