@@ -49,14 +49,14 @@ SaaS pessoal para gestão centralizada de até 10 projetos de vibecoding simult�
 ---
 
 ### FASE 2: Conexão e Parsing
-**Status:** ⏳ Aguardando  
-**Conclusão:** 0% (0/5 subtasks)
+**Status:** 🚧 Em Andamento  
+**Conclusão:** 40% (2/5 subtasks)
 
 **Objetivo:** Conectar repositórios do GitHub e parsear asbuilt.md.
 
 **Subtasks:**
-- [ ] Página "Add Project" com seletor de repositórios
-- [ ] Integração GitHub API (listar repos, buscar asbuilt.md)
+- [x] Página "Add Project" com seletor de repositórios
+- [x] Integração GitHub API (listar repos, buscar asbuilt.md)
 - [ ] Parser de asbuilt.md (extrair estrutura: fases, subtasks, status)
 - [ ] Criação de project + phases + subtasks no Supabase
 - [ ] Exibir projetos conectados no dashboard com % correto
@@ -171,6 +171,21 @@ SaaS pessoal para gestão centralizada de até 10 projetos de vibecoding simult�
 
 ## Histórico de Sessões
 
+### Sessão 2026-01-12 (4)
+**Duração:** 10min  
+**Trabalho Realizado:**
+- Início da Fase 2 (Conexão e Parsing)
+- Criação do serviço GitHub (`lib/github-service.ts`) com `@octokit/rest`
+- Página de listagem de repositórios (`app/projects/add`)
+- Listagem renderiza repositórios reais do usuário logado
+
+**Próximos Passos:**
+- Implementar ação de conectar (onClick)
+- Criar parser de asbuilt.md
+- Salvar dados no Supabase
+
+---
+
 ### Sessão 2026-01-12 (3)
 **Duração:** 30min  
 **Trabalho Realizado:**
@@ -264,6 +279,8 @@ SaaS pessoal para gestão centralizada de até 10 projetos de vibecoding simult�
 - OAuth via Supabase Auth
 - Scopes necessários: `repo`, `user`
 - Rate limit: 5000 req/hora (autenticado)
+- **Implementação:** Via `@octokit/rest` em `lib/github-service.ts`
+- **Auth:** Utiliza `provider_token` extraído da sessão do Supabase
 
 **Supabase:**
 - Client-side: `@supabase/supabase-js`
@@ -334,5 +351,5 @@ O schema inclui:
 
 ---
 
-**Última Atualização:** 2026-01-12 às 16:51  
+**Última Atualização:** 2026-01-12 às 16:56  
 **Atualizado por:** J.A.R.V.I.S. (automated)
