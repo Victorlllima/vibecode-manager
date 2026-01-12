@@ -8,6 +8,7 @@ import { Separator } from "@/components/ui/separator"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { RoadmapView } from "@/components/roadmap-view"
 import { ProjectNotes } from "@/components/project-notes"
+import { SyncButton } from "@/components/sync-button"
 
 interface ProjectPageProps {
     params: Promise<{ id: string }>
@@ -138,9 +139,10 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
                     <div className="rounded-lg border bg-card text-card-foreground shadow-sm p-6">
                         <h3 className="font-semibold mb-4">Ações</h3>
-                        <Button variant="outline" className="w-full justify-start mb-2">
-                            Sincronizar Agora
-                        </Button>
+                        <SyncButton
+                            projectId={project.id}
+                            repoFullName={project.github_repo_full_name}
+                        />
                         <Button variant="outline" className="w-full justify-start text-destructive hover:text-destructive">
                             Desconectar Projeto
                         </Button>

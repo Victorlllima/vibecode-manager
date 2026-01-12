@@ -76,8 +76,8 @@ SaaS pessoal para gestão centralizada de até 10 projetos de vibecoding simult�
 ---
 
 ### FASE 3: Visualização Detalhada
-**Status:** 🚧 Em Andamento  
-**Conclusão:** 85% (6/7 subtasks)
+**Status:** ✅ Completa  
+**Conclusão:** 100% (7/7 subtasks)
 
 **Objetivo:** Página de detalhes completa com roadmap faseado.
 
@@ -88,7 +88,7 @@ SaaS pessoal para gestão centralizada de até 10 projetos de vibecoding simult�
 - [x] Seção de notas rápidas (CRUD básico)
 - [x] Componente de sugestão de próxima ação
 - [x] Alerta visual para projetos parados >7 dias
-- [ ] Botão "Sync Now" para sincronização manual
+- [x] Botão "Sync Now" para sincronização manual
 
 **Notas da Implementação:**
 - Página de detalhes implementada com Layout Grid (2/3 Roadmap, 1/3 Sidebar)
@@ -106,7 +106,7 @@ SaaS pessoal para gestão centralizada de até 10 projetos de vibecoding simult�
 ---
 
 ### FASE 4: Sincronização Automática
-**Status:** ⏳ Aguardando  
+**Status:** 🚧 Em Andamento  
 **Conclusão:** 0% (0/7 subtasks)
 
 **Objetivo:** Webhook do GitHub para atualização automática.
@@ -187,9 +187,10 @@ SaaS pessoal para gestão centralizada de até 10 projetos de vibecoding simult�
 - Lógica de "Próxima Ação Sugerida"
 - Alertas visuais de inatividade
 - Integração de tudo na página de detalhes
+- Implementação da lógica de sincronização manual e finalização da Fase 3
 
 **Próximos Passos:**
-- Implementar lógica de Sincronização Manual (Update) e encerrar Fase 3
+- Iniciar FASE 4 (Webhooks e Automação)
 
 ---
 
@@ -324,6 +325,9 @@ SaaS pessoal para gestão centralizada de até 10 projetos de vibecoding simult�
 6. **Parser (Detalhes):** Parser percorre AST para identificar Headings (Fases) e Lists (Tasks).
 7. **Estratégia de busca:** Tenta `/docs/asbuilt.md` primeiro, depois `/asbuilt.md`.
 
+### Sincronização
+- **Estratégia:** "Wipe & Recreate" - Fases e subtasks são removidas e recriadas baseadas no Markdown atual para garantir consistência total.
+
 ### Integrações
 
 **GitHub API:**
@@ -402,5 +406,5 @@ O schema inclui:
 
 ---
 
-**Última Atualização:** 2026-01-12 às 17:21  
+**Última Atualização:** 2026-01-12 às 17:29  
 **Atualizado por:** J.A.R.V.I.S. (automated)
