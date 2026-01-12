@@ -18,24 +18,31 @@ SaaS pessoal para gestão centralizada de até 10 projetos de vibecoding simult�
 ## Roadmap Completo
 
 ### FASE 1: Fundação (MVP Core)
-**Status:** ⏳ Aguardando  
-**Conclusão:** 0% (0/6 subtasks)
+**Status:** 🚧 Em Andamento  
+**Conclusão:** 33% (2/6 subtasks)
 
 **Objetivo:** Sistema funcional básico com autenticação e visualização.
 
 **Subtasks:**
-- [ ] Setup Next.js 15 + TypeScript + estrutura inicial
+- [x] Setup Next.js 15 + TypeScript + estrutura inicial
 - [ ] Configuração Supabase (database, GitHub OAuth)
-- [ ] Executar Schema SQL completo (tables + RLS policies)
+- [x] Executar Schema SQL completo (tables + RLS policies)
 - [ ] Implementar página de login (GitHub OAuth)
 - [ ] Criar dashboard básico (lista vazia de projetos)
 - [ ] Componente ProjectCard com informações essenciais
 
 **Notas da Implementação:**
-*Nenhuma nota ainda - fase não iniciada*
+- Setup inicial concluído com sucesso
+- GitFlow configurado (branches: main, hml, dev)
+- Next.js 15 + TypeScript + Tailwind CSS v4
+- Dependências principais instaladas (Supabase, TanStack Query, Shadcn/ui)
+- Estrutura de pastas criada seguindo arquitetura do PRD
+- Arquivo `supabase/schema.sql` criado com definições completas de tables, RLS policies e triggers
 
 **Último trabalho realizado:**
-*Aguardando início*
+- Criação do arquivo de definição de Schema SQL (`supabase/schema.sql`)
+- Próximo: Criar projeto no dashboard do Supabase e aplicar o schema
+- Data última sessão: 2026-01-12
 
 **Critério de Sucesso:** Usuário consegue fazer login via GitHub e ver lista vazia de projetos.
 
@@ -164,7 +171,38 @@ SaaS pessoal para gestão centralizada de até 10 projetos de vibecoding simult�
 
 ## Histórico de Sessões
 
-*Nenhuma sessão registrada ainda - projeto em fase de setup inicial*
+### Sessão 2026-01-12 (2)
+**Duração:** 15min  
+**Trabalho Realizado:**
+- Criação do arquivo de definição de Schema SQL (`supabase/schema.sql`)
+- Tables definidas: profiles, projects, phases, subtasks, notes, github_webhooks_log
+- RLS policies configuradas para todas as tabelas
+- Triggers de updated_at implementados
+
+**Próximos Passos:**
+- Criar projeto no dashboard do Supabase
+- Aplicar o schema SQL via SQL Editor
+- Configurar GitHub OAuth
+- Implementar página de login
+
+---
+
+### Sessão 2026-01-12 (1)
+**Duração:** 30min  
+**Trabalho Realizado:**
+- Setup inicial completo do projeto
+- Estrutura GitFlow criada (main/hml/dev)
+- Next.js 15 + TypeScript inicializado
+- Dependências instaladas (Supabase, TanStack Query, Shadcn, Octokit, etc)
+- Estrutura de pastas criada
+- asbuilt.md completo gerado com 6 fases
+- Commit inicial executado
+
+**Próximos Passos:**
+- Criar projeto no Supabase
+- Configurar GitHub OAuth
+- Executar schema SQL (tables + RLS)
+- Implementar página de login
 
 ---
 
@@ -261,16 +299,25 @@ npx supabase db reset
 
 ### Schema SQL
 
-O schema completo está definido no PRD Técnico e inclui:
+**Arquivo:** `supabase/schema.sql` criado com definições completas.
+
+O schema inclui:
+- Tabela `profiles` (extensão de dados do usuário)
 - Tabela `projects` (repositórios conectados)
 - Tabela `phases` (fases do roadmap)
 - Tabela `subtasks` (tarefas granulares)
 - Tabela `notes` (notas rápidas)
-- Tabela `github_webhooks_log` (auditoria)
-- RLS Policies completas
-- Triggers de `updated_at`
+- Tabela `github_webhooks_log` (auditoria de webhooks)
+- RLS Policies completas para cada tabela
+- Triggers de `updated_at` automáticos
+
+**Como aplicar:**
+1. Criar projeto no Supabase Dashboard
+2. Ir em SQL Editor
+3. Colar conteúdo de `supabase/schema.sql`
+4. Executar
 
 ---
 
-**Última Atualização:** 2026-01-12 (setup inicial)  
-**Atualizado por:** F.R.I.D.A.Y. (manual - projeto em criação)
+**Última Atualização:** 2026-01-12 às 16:32  
+**Atualizado por:** J.A.R.V.I.S. (automated)
