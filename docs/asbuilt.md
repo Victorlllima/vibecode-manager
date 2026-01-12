@@ -50,15 +50,15 @@ SaaS pessoal para gestão centralizada de até 10 projetos de vibecoding simult�
 
 ### FASE 2: Conexão e Parsing
 **Status:** 🚧 Em Andamento  
-**Conclusão:** 40% (2/5 subtasks)
+**Conclusão:** 80% (4/5 subtasks)
 
 **Objetivo:** Conectar repositórios do GitHub e parsear asbuilt.md.
 
 **Subtasks:**
 - [x] Página "Add Project" com seletor de repositórios
 - [x] Integração GitHub API (listar repos, buscar asbuilt.md)
-- [ ] Parser de asbuilt.md (extrair estrutura: fases, subtasks, status)
-- [ ] Criação de project + phases + subtasks no Supabase
+- [x] Parser de asbuilt.md (extrair estrutura: fases, subtasks, status)
+- [x] Criação de project + phases + subtasks no Supabase
 - [ ] Exibir projetos conectados no dashboard com % correto
 
 **Notas da Implementação:**
@@ -171,6 +171,20 @@ SaaS pessoal para gestão centralizada de até 10 projetos de vibecoding simult�
 
 ## Histórico de Sessões
 
+### Sessão 2026-01-12 (5)
+**Duração:** 15min  
+**Trabalho Realizado:**
+- Implementação do parser de `asbuilt.md` com `remark`
+- Server Action `importProject` para salvar dados no Supabase
+- Integração do botão "Conectar" na lista de repositórios
+- Tratamento de branches e status via parser
+
+**Próximos Passos:**
+- Validar fluxo de importação completo
+- Exibir projetos no Dashboard
+
+---
+
 ### Sessão 2026-01-12 (4)
 **Duração:** 10min  
 **Trabalho Realizado:**
@@ -272,6 +286,8 @@ SaaS pessoal para gestão centralizada de até 10 projetos de vibecoding simult�
 3. **Sincronização:** Webhook-first (automático) + fallback manual (botão "Sync Now")
 4. **Status de fases:** 5 estados (pending, in_progress, paused, blocked, completed)
 5. **Alerta de inatividade:** Borda vermelha em projetos com `days_inactive > 7`
+6. **Parser (Detalhes):** Parser percorre AST para identificar Headings (Fases) e Lists (Tasks).
+7. **Estratégia de busca:** Tenta `/docs/asbuilt.md` primeiro, depois `/asbuilt.md`.
 
 ### Integrações
 
@@ -351,5 +367,5 @@ O schema inclui:
 
 ---
 
-**Última Atualização:** 2026-01-12 às 16:56  
+**Última Atualização:** 2026-01-12 às 17:02  
 **Atualizado por:** J.A.R.V.I.S. (automated)

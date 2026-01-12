@@ -1,10 +1,10 @@
 import { createClient } from "@/lib/supabase/server";
 import { redirect } from "next/navigation";
 import { getUserRepositories } from "@/lib/github-service";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Lock, Unlock, ArrowLeft } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
+import { RepoCard } from "./repo-card";
 
 export default async function NewProjectPage() {
     const supabase = await createClient();
@@ -14,7 +14,6 @@ export default async function NewProjectPage() {
         redirect("/login");
     }
 
-    // O provider_token vem na sessão se configurado corretamente no login
     const providerToken = session.provider_token;
 
     if (!providerToken) {
@@ -47,38 +46,14 @@ export default async function NewProjectPage() {
 
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
                 {repos.map((repo) => (
-                    <Card key={repo.id} className="flex flex-col hover:border-primary/50 transition-colors cursor-pointer transition-all duration-200">
-                        <CardHeader className="pb-2">
-                            <div className="flex justify-between items-start">
-                                <CardTitle className="text-base truncate" title={repo.name}>
-                                    {repo.name}
-                                </CardTitle>
-                                {repo.private ? (
-                                    <Lock className="w-4 h-4 text-muted-foreground" />
-                                ) : (
-                                    <Unlock className="w-4 h-4 text-muted-foreground" />
-                                )}
-                            </div>
-                            <CardDescription className="text-xs truncate">
-                                {repo.full_name}
-                            </CardDescription>
-                        </CardHeader>
-                        <CardContent className="flex-1 flex flex-col justify-end pt-0">
-                            <p className="text-sm text-muted-foreground line-clamp-2 my-2 h-[40px]">
-                                {repo.description || "Sem descrição"}
-                            </p>
-                            <Button className="w-full mt-2" variant="secondary">
-                                Conectar
-                            </Button>
-                        </CardContent>
-                    </Card>
+                    <RepoCard key={repo.id} repo={repo} />
                 ))}
             </div>
 
             {repos.length === 0 && (
                 <div className="text-center py-10 text-muted-foreground flex flex-col items-center">
                     <p className="mb-4">Nenhum repositório encontrado.</p>
-                    <Button variant="outline" onClick={() => window.location.reload()}>Recarregar</Button>
+                    {/* Botão de recarregar removido no server component, idealmente seria um refresh via router */}
                 </div>
             )}
         </div>
