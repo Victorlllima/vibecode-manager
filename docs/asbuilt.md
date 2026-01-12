@@ -49,8 +49,8 @@ SaaS pessoal para gestão centralizada de até 10 projetos de vibecoding simult�
 ---
 
 ### FASE 2: Conexão e Parsing
-**Status:** 🚧 Em Andamento  
-**Conclusão:** 80% (4/5 subtasks)
+**Status:** ✅ Completa  
+**Conclusão:** 100% (5/5 subtasks)
 
 **Objetivo:** Conectar repositórios do GitHub e parsear asbuilt.md.
 
@@ -59,13 +59,17 @@ SaaS pessoal para gestão centralizada de até 10 projetos de vibecoding simult�
 - [x] Integração GitHub API (listar repos, buscar asbuilt.md)
 - [x] Parser de asbuilt.md (extrair estrutura: fases, subtasks, status)
 - [x] Criação de project + phases + subtasks no Supabase
-- [ ] Exibir projetos conectados no dashboard com % correto
+- [x] Exibir projetos conectados no dashboard com % correto
 
 **Notas da Implementação:**
-*Nenhuma nota ainda - fase não iniciada*
+- Dashboard implementado com cálculo dinâmico de progresso (soma de subtasks de todas as fases)
+- Tratamento de Empty State vs Lista de Projetos reais
+- Importação via Server Action com tratamento de erros
 
 **Último trabalho realizado:**
-*Aguardando conclusão da FASE 1*
+- Finalização da Fase 2 com integração total do Dashboard
+- Próximo: Implementar FASE 3 (Detalhes do Projeto)
+- Data última sessão: 2026-01-12
 
 **Critério de Sucesso:** Usuário conecta um repo, sistema parseia asbuilt.md e exibe no dashboard com % de conclusão correto.
 
@@ -178,10 +182,10 @@ SaaS pessoal para gestão centralizada de até 10 projetos de vibecoding simult�
 - Server Action `importProject` para salvar dados no Supabase
 - Integração do botão "Conectar" na lista de repositórios
 - Tratamento de branches e status via parser
+- Finalização da Fase 2. Integração do Dashboard com Supabase e renderização dos cards reais
 
 **Próximos Passos:**
-- Validar fluxo de importação completo
-- Exibir projetos no Dashboard
+- Iniciar FASE 3 (Visualização Detalhada do Projeto)
 
 ---
 
@@ -367,5 +371,5 @@ O schema inclui:
 
 ---
 
-**Última Atualização:** 2026-01-12 às 17:02  
+**Última Atualização:** 2026-01-12 às 17:09  
 **Atualizado por:** J.A.R.V.I.S. (automated)
