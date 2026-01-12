@@ -64,6 +64,46 @@ export async function importProject(repoId: number, repoFullName: string, repoUr
 
     if (projectError) throw new Error(`Erro ao criar projeto: ${projectError.message}`);
 
+    // --- LÓGICA DE WEBHOOK ---
+    try {
+        const appUrl = process.env.NEXT_PUBLIC_APP_URL;
+        const webhookSecret = process.env.GITHUB_WEBHOOK_SECRET;
+
+        if (appUrl && webhookSecret) {
+            const webhookUrl = `${appUrl}/api/webhooks/github`;
+
+            // Verifica se já existe webhook para esta URL para não duplicar
+            const { data: existingHooks } = await octokit.rest.repos.listWebhooks({
+                owner,
+                repo,
+            });
+
+            // @ts-ignore
+            const hookExists = existingHooks.find(h => h.config.url === webhookUrl);
+
+            if (!hookExists) {
+                await octokit.rest.repos.createWebhook({
+                    owner,
+                    repo,
+                    name: 'web',
+                    active: true,
+                    events: ['push'],
+                    config: {
+                        url: webhookUrl,
+                        content_type: 'json',
+                        secret: webhookSecret,
+                        insecure_ssl: '0',
+                    },
+                });
+                console.log(`Webhook criado para ${repoFullName}`);
+            }
+        }
+    } catch (webhookError) {
+        console.error("Aviso: Não foi possível criar o webhook automaticamente.", webhookError);
+        // Não falha a importação, apenas avisa
+    }
+    // --- FIM LÓGICA DE WEBHOOK ---
+
     // Criar Fases e Subtasks
     for (const [index, phase] of parsedData.phases.entries()) {
         const { data: phaseData, error: phaseError } = await supabase

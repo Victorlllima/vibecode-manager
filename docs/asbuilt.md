@@ -106,19 +106,19 @@ SaaS pessoal para gestão centralizada de até 10 projetos de vibecoding simult�
 ---
 
 ### FASE 4: Sincronização Automática
-**Status:** 🚧 Em Andamento  
-**Conclusão:** 42% (3/7 subtasks)
+**Status:** ✅ Completa  
+**Conclusão:** 100% (7/7 subtasks)
 
 **Objetivo:** Webhook do GitHub para atualização automática.
 
 **Subtasks:**
 - [x] API route `/api/webhooks/github`
 - [x] Validação de webhook signature (HMAC SHA256)
-- [ ] Configuração automática de webhook ao conectar projeto
-- [ ] Re-parsing de asbuilt.md ao receber push
-- [ ] Atualização automática de project/phases/subtasks
+- [x] Configuração automática de webhook ao conectar projeto
+- [x] Re-parsing de asbuilt.md ao receber push
+- [x] Atualização automática de project/phases/subtasks
 - [x] Log de webhooks (tabela `github_webhooks_log`)
-- [ ] Implementar botão "Sync Now" funcional (Feature movida para FASE 3 e completa)
+- [x] Implementar botão "Sync Now" funcional (Feature movida para FASE 3 e completa)
 
 **Notas da Implementação:**
 *Nenhuma nota ainda - fase não iniciada*
@@ -179,6 +179,19 @@ SaaS pessoal para gestão centralizada de até 10 projetos de vibecoding simult�
 ---
 
 ## Histórico de Sessões
+
+### Sessão 2026-01-12 (9)
+**Duração:** 20min  
+**Trabalho Realizado:**
+- Refatoração da lógica de Sync para serviço reutilizável
+- Configuração automática de Webhooks na importação
+- Implementação completa do processamento de Webhooks (Push -> Sync)
+- Acesso agnóstico a repositórios privados via `auth.identities`
+
+**Próximos Passos:**
+- Iniciar FASE 5 (Polimento e UX) ou Deploy
+
+---
 
 ### Sessão 2026-01-12 (8)
 **Duração:** 10min  
@@ -339,6 +352,8 @@ SaaS pessoal para gestão centralizada de até 10 projetos de vibecoding simult�
 
 ### Sincronização
 - **Estratégia:** "Wipe & Recreate" - Fases e subtasks são removidas e recriadas baseadas no Markdown atual para garantir consistência total.
+- **Automação via Webhooks:** O sistema configura automaticamente o webhook no GitHub durante a importação.
+- **Processamento 'Headless':** O webhook utiliza a Service Role Key para acessar o banco e recupera o token OAuth do usuário na tabela `auth.identities` para acessar repositórios privados.
 
 ### Integrações
 
@@ -418,5 +433,5 @@ O schema inclui:
 
 ---
 
-**Última Atualização:** 2026-01-12 às 17:34  
+**Última Atualização:** 2026-01-12 às 17:41  
 **Atualizado por:** J.A.R.V.I.S. (automated)
