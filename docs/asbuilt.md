@@ -131,13 +131,13 @@ SaaS pessoal para gestão centralizada de até 10 projetos de vibecoding simult�
 ---
 
 ### FASE 5: Polimento e UX
-**Status:** ⏳ Aguardando  
-**Conclusão:** 0% (0/7 subtasks)
+**Status:** 🚧 Em Andamento  
+**Conclusão:** 14% (1/7 subtasks)
 
 **Objetivo:** Melhorias visuais e experiência do usuário.
 
 **Subtasks:**
-- [ ] Loading states (skeletons) em todas as páginas
+- [x] Loading states (skeletons) em todas as páginas
 - [ ] Error handling global (toast notifications)
 - [ ] Animações suaves (framer-motion - opcional)
 - [ ] Responsividade mobile completa
@@ -179,6 +179,18 @@ SaaS pessoal para gestão centralizada de até 10 projetos de vibecoding simult�
 ---
 
 ## Histórico de Sessões
+
+### Sessão 2026-01-12 (10)
+**Duração:** 15min  
+**Trabalho Realizado:**
+- Instalação do componente `Skeleton`
+- Criação de `loading.tsx` para Dashboard e Project Details
+- Melhoria percebida de performance com layouts preemptivos
+
+**Próximos Passos:**
+- Implementar Error Boundaries e refinar UX
+
+---
 
 ### Sessão 2026-01-12 (9)
 **Duração:** 20min  
@@ -355,6 +367,10 @@ SaaS pessoal para gestão centralizada de até 10 projetos de vibecoding simult�
 - **Automação via Webhooks:** O sistema configura automaticamente o webhook no GitHub durante a importação.
 - **Processamento 'Headless':** O webhook utiliza a Service Role Key para acessar o banco e recupera o token OAuth do usuário na tabela `auth.identities` para acessar repositórios privados.
 
+### UX/UI
+- **Loading:** Implementado sistema de Skeletons (`loading.tsx`) nativo do Next.js App Router para feedback visual instantâneo.
+- **Framework UI:** Shadcn/ui para consistência e acessibilidade.
+
 ### Integrações
 
 **GitHub API:**
@@ -433,5 +449,5 @@ O schema inclui:
 
 ---
 
-**Última Atualização:** 2026-01-12 às 17:41  
+**Última Atualização:** 2026-01-12 às 18:03  
 **Atualizado por:** J.A.R.V.I.S. (automated)
