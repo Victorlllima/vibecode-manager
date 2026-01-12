@@ -132,7 +132,7 @@ SaaS pessoal para gestão centralizada de até 10 projetos de vibecoding simult�
 
 ### FASE 5: Polimento e UX
 **Status:** 🚧 Em Andamento  
-**Conclusão:** 14% (1/7 subtasks)
+**Conclusão:** 28% (2/7 subtasks)
 
 **Objetivo:** Melhorias visuais e experiência do usuário.
 
@@ -142,7 +142,7 @@ SaaS pessoal para gestão centralizada de até 10 projetos de vibecoding simult�
 - [ ] Animações suaves (framer-motion - opcional)
 - [ ] Responsividade mobile completa
 - [ ] Empty states informativos
-- [ ] Confirmações de ação (deletar projeto, desconectar repo)
+- [x] Confirmações de ação (deletar projeto, desconectar repo)
 - [ ] Dark mode (opcional)
 
 **Notas da Implementação:**
@@ -179,6 +179,15 @@ SaaS pessoal para gestão centralizada de até 10 projetos de vibecoding simult�
 ---
 
 ## Histórico de Sessões
+
+### Sessão 2026-01-12 (11)
+**Duração:** 10min  
+**Trabalho Realizado:**
+- Server Action `deleteProject` com limpeza de Webhooks
+- Componente `DeleteProjectButton` com `AlertDialog` para confirmação
+- UX mais segura para ações destrutivas
+
+---
 
 ### Sessão 2026-01-12 (10)
 **Duração:** 15min  
@@ -369,6 +378,7 @@ SaaS pessoal para gestão centralizada de até 10 projetos de vibecoding simult�
 
 ### UX/UI
 - **Loading:** Implementado sistema de Skeletons (`loading.tsx`) nativo do Next.js App Router para feedback visual instantâneo.
+- **Segurança:** Implementado `AlertDialog` para ações destrutivas (Disconnect Project), prevenindo perda acidental de dados.
 - **Framework UI:** Shadcn/ui para consistência e acessibilidade.
 
 ### Integrações
