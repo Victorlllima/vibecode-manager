@@ -77,7 +77,7 @@ SaaS pessoal para gestão centralizada de até 10 projetos de vibecoding simult�
 
 ### FASE 3: Visualização Detalhada
 **Status:** 🚧 Em Andamento  
-**Conclusão:** 43% (3/7 subtasks)
+**Conclusão:** 85% (6/7 subtasks)
 
 **Objetivo:** Página de detalhes completa com roadmap faseado.
 
@@ -85,18 +85,20 @@ SaaS pessoal para gestão centralizada de até 10 projetos de vibecoding simult�
 - [x] Página de detalhes do projeto (`/projects/[id]`)
 - [x] Componente RoadmapView (lista de fases expandíveis)
 - [x] Visualização de subtasks com checkboxes (read-only)
-- [ ] Seção de notas rápidas (CRUD básico)
-- [ ] Componente de sugestão de próxima ação
-- [ ] Alerta visual para projetos parados >7 dias
+- [x] Seção de notas rápidas (CRUD básico)
+- [x] Componente de sugestão de próxima ação
+- [x] Alerta visual para projetos parados >7 dias
 - [ ] Botão "Sync Now" para sincronização manual
 
 **Notas da Implementação:**
 - Página de detalhes implementada com Layout Grid (2/3 Roadmap, 1/3 Sidebar)
 - Componente `RoadmapView` utilizando Accordion do shadcn/ui para renderizar fases aninhadas
+- Sistema de Notas Rápidas implementado com Server Actions e Optimistic Updates (via revalidatePath)
+- Algoritmo de 'Próxima Ação': Busca primeira subtask pendente da primeira fase ativa
 
 **Último trabalho realizado:**
-- Criação estrutural da visualização de projeto
-- Próximo: Implementar Notas e Sincronização
+- Implementação de Notas, Sugestão de Ação e Alertas na página de detalhes
+- Próximo: Implementar lógica de Sincronização Manual (Update) e encerrar Fase 3
 - Data última sessão: 2026-01-12
 
 **Critério de Sucesso:** Usuário visualiza roadmap completo, adiciona notas e recebe sugestão de próxima ação.
@@ -177,6 +179,19 @@ SaaS pessoal para gestão centralizada de até 10 projetos de vibecoding simult�
 ---
 
 ## Histórico de Sessões
+
+### Sessão 2026-01-12 (7)
+**Duração:** 15min  
+**Trabalho Realizado:**
+- Implementação de Notas Rápidas (Backend + Frontend)
+- Lógica de "Próxima Ação Sugerida"
+- Alertas visuais de inatividade
+- Integração de tudo na página de detalhes
+
+**Próximos Passos:**
+- Implementar lógica de Sincronização Manual (Update) e encerrar Fase 3
+
+---
 
 ### Sessão 2026-01-12 (6)
 **Duração:** 15min  
@@ -387,5 +402,5 @@ O schema inclui:
 
 ---
 
-**Última Atualização:** 2026-01-12 às 17:15  
+**Última Atualização:** 2026-01-12 às 17:21  
 **Atualizado por:** J.A.R.V.I.S. (automated)
