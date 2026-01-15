@@ -49,7 +49,8 @@
 
 @layer base {
   * {
-    @apply border-border;
+    border-color: hsl(var(--border));
+    /* Uso direto para evitar erro de build */
   }
 
   body {
