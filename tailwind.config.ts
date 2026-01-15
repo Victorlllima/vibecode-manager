@@ -8,15 +8,17 @@ const config: Config = {
         "./app/**/*.{js,ts,jsx,tsx,mdx}",
     ],
     theme: {
-        container: {
-            center: true,
-            padding: "2rem",
-            screens: {
-                "2xl": "1400px",
-            },
-        },
         extend: {
             colors: {
+                // Cores do tema Neon Laranja
+                'neon-orange': '#F97316',
+                'neon-orange-light': '#FB923C',
+                'neon-orange-dark': '#EA580C',
+                'dark-bg': '#0A0A0F',
+                'dark-card': '#111118',
+                'dark-red': '#1A0A0A',
+
+                // Mantenho as variáveis HSL para compatibilidade com Shadcn
                 border: "hsl(var(--border))",
                 input: "hsl(var(--input))",
                 ring: "hsl(var(--ring))",
@@ -51,27 +53,25 @@ const config: Config = {
                     foreground: "hsl(var(--card-foreground))",
                 },
             },
-            borderRadius: {
-                lg: "var(--radius)",
-                md: "calc(var(--radius) - 2px)",
-                sm: "calc(var(--radius) - 4px)",
+            // Efeito de brilho (glow) para os botões
+            boxShadow: {
+                'neon': '0 0 20px rgba(249, 115, 22, 0.5), 0 0 40px rgba(249, 115, 22, 0.3)',
+                'neon-strong': '0 0 30px rgba(249, 115, 22, 0.7), 0 0 60px rgba(249, 115, 22, 0.4)',
+                'neon-line': '0 4px 20px rgba(249, 115, 22, 0.8)',
+            },
+            // Animação de pulsar para o efeito neon
+            animation: {
+                'pulse-neon': 'pulse-neon 2s ease-in-out infinite',
             },
             keyframes: {
-                "accordion-down": {
-                    from: { height: "0" },
-                    to: { height: "var(--radix-accordion-content-height)" },
+                'pulse-neon': {
+                    '0%, 100%': { boxShadow: '0 0 20px rgba(249, 115, 22, 0.5)' },
+                    '50%': { boxShadow: '0 0 40px rgba(249, 115, 22, 0.8)' },
                 },
-                "accordion-up": {
-                    from: { height: "var(--radix-accordion-content-height)" },
-                    to: { height: "0" },
-                },
-            },
-            animation: {
-                "accordion-down": "accordion-down 0.2s ease-out",
-                "accordion-up": "accordion-up 0.2s ease-out",
             },
         },
     },
-    plugins: [], // Removi tailwindcss-animate pois não está no package.json
+    plugins: [require("tailwindcss-animate")],
 };
+
 export default config;

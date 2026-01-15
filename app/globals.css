@@ -2,28 +2,136 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Reset básico para garantir que variáveis do Shadcn funcionem se necessárias */
-@layer base {
-  :root {
-    --background: 0 0% 3.5%;
-    --foreground: 0 0% 98%;
-    --card: 0 0% 3.5%;
-    --card-foreground: 0 0% 98%;
-    --popover: 0 0% 3.5%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 346 87% 43%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 240 3.7% 15.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
-    --accent: 346 87% 43%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 340 4.5% 64%;
-    --radius: 0.5rem;
-  }
+/* ========================================
+   TEMA NEON LARANJA - VIBECODE MANAGER
+   ======================================== */
+
+/* Reset e Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Background com degradê escuro */
+body {
+  background: linear-gradient(135deg,
+      #0A0A0F 0%,
+      #0D0D12 25%,
+      #1A0A0A 50%,
+      #0D0D12 75%,
+      #0A0A0F 100%);
+  min-height: 100vh;
+  color: white;
+  font-family: system-ui, -apple-system, sans-serif;
+  background-attachment: fixed;
+}
+
+/* ========================================
+   CLASSES UTILITÁRIAS NEON
+   ======================================== */
+
+/* Botão com borda neon */
+.btn-neon {
+  position: relative;
+  border: 2px solid #F97316;
+  background: transparent;
+  color: white;
+  padding: 12px 24px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-neon:hover {
+  box-shadow: 0 0 20px rgba(249, 115, 22, 0.5);
+}
+
+/* Botão grande com glow */
+.btn-neon-glow {
+  position: relative;
+  background: transparent;
+  border: 2px solid #F97316;
+  color: white;
+  padding: 16px 48px;
+  font-size: 1.125rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+/* Linha de brilho embaixo do botão */
+.btn-neon-glow::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 10%;
+  right: 10%;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, #F97316, transparent);
+  border-radius: 2px;
+  box-shadow: 0 0 20px #F97316, 0 0 40px #F97316;
+}
+
+.btn-neon-glow:hover {
+  box-shadow: 0 0 30px rgba(249, 115, 22, 0.6);
+}
+
+/* Ícone circular neon */
+.icon-neon {
+  width: 64px;
+  height: 64px;
+  border: 2px solid #F97316;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #F97316;
+  transition: all 0.3s ease;
+}
+
+.icon-neon:hover {
+  box-shadow: 0 0 20px rgba(249, 115, 22, 0.5);
+}
+
+/* Linha de brilho para features */
+.line-glow {
+  height: 3px;
+  background: linear-gradient(90deg, transparent 0%, #F97316 50%, transparent 100%);
+  box-shadow: 0 0 10px #F97316;
+  margin-top: 8px;
+}
+
+/* Texto com brilho sutil */
+.text-glow {
+  text-shadow: 0 0 10px rgba(249, 115, 22, 0.3);
+}
+
+/* ========================================
+   VARIÁVEIS CSS SHADCN COMPATIBILIDADE
+   ======================================== */
+:root {
+  --background: 240 10% 4%;
+  --foreground: 0 0% 100%;
+  --card: 240 10% 7%;
+  --card-foreground: 0 0% 100%;
+  --popover: 240 10% 7%;
+  --popover-foreground: 0 0% 100%;
+  --primary: 24.6 95% 53.1%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 240 3.7% 15.9%;
+  --secondary-foreground: 0 0% 98%;
+  --muted: 240 3.7% 15.9%;
+  --muted-foreground: 240 5% 64.9%;
+  --accent: 24.6 95% 53.1%;
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 240 3.7% 15.9%;
+  --input: 240 3.7% 15.9%;
+  --ring: 24.6 95% 53.1%;
+  --radius: 0.5rem;
 }

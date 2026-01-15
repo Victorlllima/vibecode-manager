@@ -1,13 +1,12 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google"; // Importando Inter
+import { Inter } from "next/font/google";
 import "./globals.css";
 
-// Configurando a fonte
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "VibeCode Manager",
-  description: "Gerencie seus projetos de vibecoding com estilo.",
+  description: "Gestão centralizada de projetos de vibecoding",
 };
 
 export default function RootLayout({
@@ -16,11 +15,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR" className="dark"> {/* Forçando Dark Mode */}
-      <body className={`${inter.className} min-h-screen bg-[#09090b] text-white antialiased selection:bg-[#FF4D5A] selection:text-white`}>
-        {/* Background Radial Fixo via Tailwind direto */}
-        <div className="fixed inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#cd0b2f]/20 via-[#09090b]/40 to-[#09090b]" />
-
+    <html lang="pt-BR" className="dark">
+      <body className={`${inter.className} antialiased`}>
         {children}
       </body>
     </html>

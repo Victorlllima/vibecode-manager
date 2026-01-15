@@ -1,102 +1,96 @@
-import Link from "next/link"
-import { ArrowRight, Github, RefreshCw, Layout, Code2 } from "lucide-react"
-import { Button } from "@/components/ui/button"
+// app/page.tsx
+import Link from "next/link";
+import { Zap, RefreshCw, GitBranch, Code2 } from "lucide-react";
 
-export default function LandingPage() {
+export default function HomePage() {
   return (
-    <div className="flex flex-col min-h-screen">
-      {/* Header */}
-      <header className="px-6 h-16 flex items-center border-b justify-between">
-        <div className="flex items-center gap-2 font-bold text-xl">
-          <Code2 className="w-6 h-6 text-primary" />
-          <span>VibeCode Manager</span>
+    <div className="min-h-screen flex flex-col">
+      {/* ========== HEADER ========== */}
+      <header className="flex items-center justify-between px-6 py-4">
+        {/* Logo */}
+        <div className="flex items-center gap-2">
+          <Zap className="w-6 h-6 text-neon-orange" />
+          <span className="text-white font-semibold text-lg">
+            Vibecode Manager
+          </span>
         </div>
-        <nav>
-          <Link href="/login">
-            <Button variant="ghost">Entrar</Button>
-          </Link>
-          <Link href="/login" className="ml-2">
-            <Button>Começar Agora</Button>
-          </Link>
-        </nav>
+
+        {/* Botão Sair - Visível apenas para fins de demonstração ou logado */}
+        <button className="btn-neon px-4 py-2 text-sm rounded">
+          Configurações
+        </button>
       </header>
 
-      {/* Hero Section */}
-      <main className="flex-1">
-        <section className="w-full py-20 md:py-32 lg:py-40 bg-gradient-to-b from-background to-muted/20">
-          <div className="container px-4 md:px-6 mx-auto text-center">
-            <div className="space-y-4 max-w-3xl mx-auto">
-              <h1 className="text-4xl font-extrabold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl">
-                Transforme seu <span className="text-primary">asbuilt.md</span> em um Roadmap Vivo.
-              </h1>
-              <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl">
-                Pare de atualizar quadros manuais. O VibeCode Manager sincroniza seu progresso diretamente do GitHub. Você coda, nós atualizamos.
-              </p>
-            </div>
-            <div className="space-y-4 mt-8">
-              <Link href="/login">
-                <Button size="lg" className="px-8 h-12 text-base">
-                  <Github className="mr-2 h-5 w-5" />
-                  Entrar com GitHub
-                </Button>
-              </Link>
-              <p className="text-xs text-muted-foreground">
-                Livre para uso pessoal. Código Aberto.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* Features Section */}
-        <section className="w-full py-20 bg-muted/10 border-t">
-          <div className="container px-4 md:px-6 mx-auto">
-            <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-3">
-              <div className="flex flex-col items-center space-y-4 text-center">
-                <div className="p-4 bg-primary/10 rounded-full text-primary">
-                  <RefreshCw className="h-8 w-8" />
-                </div>
-                <h3 className="text-xl font-bold">Sync Automático</h3>
-                <p className="text-muted-foreground">
-                  Integração via Webhooks. Dê um <code>git push</code> e veja seu dashboard atualizar magicamente em segundos.
-                </p>
-              </div>
-              <div className="flex flex-col items-center space-y-4 text-center">
-                <div className="p-4 bg-primary/10 rounded-full text-primary">
-                  <Layout className="h-8 w-8" />
-                </div>
-                <h3 className="text-xl font-bold">Roadmap Visual</h3>
-                <p className="text-muted-foreground">
-                  Visualize fases, subtasks e progresso em uma interface limpa. Abandone a leitura de Markdown puro.
-                </p>
-              </div>
-              <div className="flex flex-col items-center space-y-4 text-center">
-                <div className="p-4 bg-primary/10 rounded-full text-primary">
-                  <Code2 className="h-8 w-8" />
-                </div>
-                <h3 className="text-xl font-bold">Foco no Código</h3>
-                <p className="text-muted-foreground">
-                  Mantenha a verdade no repositório. O <code>asbuilt.md</code> continua sendo sua fonte única da verdade.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-      </main>
-
-      {/* Footer */}
-      <footer className="py-6 border-t w-full shrink-0 items-center px-4 md:px-6 flex flex-col sm:flex-row justify-between gap-4">
-        <p className="text-xs text-muted-foreground text-center sm:text-left">
-          © 2026 VibeCode Manager. Construído com Next.js 15 e Supabase.
-        </p>
-        <div className="flex gap-4">
-          <Link href="#" className="text-xs hover:underline underline-offset-4">
-            Termos
-          </Link>
-          <Link href="#" className="text-xs hover:underline underline-offset-4">
-            Privacidade
+      {/* ========== CONTEÚDO PRINCIPAL ========== */}
+      <main className="flex-1 flex flex-col items-center justify-center px-6">
+        {/* Botão Novo Projeto */}
+        <div className="self-end mb-12">
+          <Link href="/projects/add">
+            <button className="btn-neon px-6 py-3 rounded relative">
+              Novo Projeto
+              {/* Linha de brilho */}
+              <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-gradient-to-r from-transparent via-neon-orange to-transparent"
+                style={{ boxShadow: '0 0 10px #F97316' }} />
+            </button>
           </Link>
         </div>
-      </footer>
+
+        {/* Botão Principal - Entrar com GitHub */}
+        <div className="mb-16">
+          <Link href="/login">
+            <button className="btn-neon-glow px-12 py-4 text-xl rounded-lg">
+              Entrar com GitHub
+            </button>
+          </Link>
+        </div>
+
+        {/* ========== FEATURES ========== */}
+        <div className="flex items-center justify-center gap-8 md:gap-16 mt-8 flex-wrap">
+          {/* Feature 1 - Sync Automático */}
+          <div className="flex flex-col items-center min-w-[120px]">
+            <div className="icon-neon">
+              <RefreshCw className="w-7 h-7" />
+            </div>
+            <span className="text-white text-sm mt-3 font-medium">
+              Sync Automático
+            </span>
+            <div className="line-glow w-24 mt-2" />
+          </div>
+
+          {/* Feature 2 - Roadmap Visual */}
+          <div className="flex flex-col items-center min-w-[120px]">
+            <div className="icon-neon">
+              <GitBranch className="w-7 h-7" />
+            </div>
+            <span className="text-white text-sm mt-3 font-medium">
+              Roadmap Visual
+            </span>
+            <div className="line-glow w-24 mt-2" />
+          </div>
+
+          {/* Feature 3 - Foco no Código */}
+          <div className="flex flex-col items-center min-w-[120px]">
+            <div className="icon-neon">
+              <Code2 className="w-7 h-7" />
+            </div>
+            <span className="text-white text-sm mt-3 font-medium">
+              Foco no Código
+            </span>
+            <div className="line-glow w-24 mt-2" />
+          </div>
+        </div>
+      </main>
+
+      {/* ========== DECORAÇÃO DE CANTO ========== */}
+      <div className="fixed bottom-6 right-6">
+        <svg
+          className="w-10 h-10 text-neon-orange/20"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+        >
+          <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
+        </svg>
+      </div>
     </div>
-  )
+  );
 }
