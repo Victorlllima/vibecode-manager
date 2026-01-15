@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Plus, FolderOpen } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import { ProjectCard } from "@/components/project-card";
+import { NeonButton } from "@/components/ui/neon-button";
 
 export default async function DashboardPage() {
     const supabase = await createClient();
@@ -39,10 +40,14 @@ export default async function DashboardPage() {
                 </h1>
 
                 <Link href="/projects/add">
-                    <button className="btn-neon flex items-center gap-2 px-5 py-2.5 rounded hover:shadow-neon transition-all">
-                        <Plus className="w-4 h-4" />
-                        <span>NOVO PROJETO</span>
-                    </button>
+                    <Link href="/projects/add">
+                        <NeonButton variant="small">
+                            <div className="flex items-center gap-2">
+                                <Plus className="w-4 h-4" />
+                                <span>NOVO PROJETO</span>
+                            </div>
+                        </NeonButton>
+                    </Link>
                 </Link>
             </div>
 
@@ -60,9 +65,9 @@ export default async function DashboardPage() {
                         Conecte seu primeiro repositório do GitHub para começar a gerenciar seus projetos de vibecoding.
                     </p>
                     <Link href="/projects/add">
-                        <button className="btn-neon-glow px-8 py-3 rounded-lg">
+                        <NeonButton variant="large">
                             Conectar Repositório
-                        </button>
+                        </NeonButton>
                     </Link>
                 </div>
             ) : (

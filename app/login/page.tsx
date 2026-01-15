@@ -1,80 +1,41 @@
-// app/login/page.tsx
-import { Zap } from "lucide-react";
-import { createClient } from "@/lib/supabase/server";
-import { redirect } from "next/navigation";
-import { headers } from "next/headers";
+'use client';
+import { createClient } from '@/lib/supabase/client';
+import { NeonButton } from '@/components/ui/neon-button';
 
-export default async function LoginPage() {
-    const supabase = await createClient();
-    const { data: { user } } = await supabase.auth.getUser();
+export default function LoginPage() {
+    const supabase = createClient();
 
-    // Se já está logado, redireciona para o dashboard
-    if (user) {
-        redirect("/dashboard");
-    }
-
-    // Função de login com GitHub
-    async function signInWithGitHub() {
-        "use server";
-
-        const supabase = await createClient();
-        const headersList = await headers();
-        const origin = headersList.get("origin") || "http://localhost:3000";
-
-        const { data, error } = await supabase.auth.signInWithOAuth({
-            provider: "github",
-            options: {
-                redirectTo: `${origin}/auth/callback`,
-                scopes: "repo user",
-            },
+    const handleLogin = async () => {
+        await supabase.auth.signInWithOAuth({
+            provider: 'github',
+            options: { redirectTo: `${location.origin}/auth/callback` },
         });
-
-        if (error) {
-            console.error("Erro no login:", error);
-        }
-
-        if (data?.url) {
-            redirect(data.url);
-        }
-    }
+    };
 
     return (
-        <div className="min-h-screen flex flex-col items-center justify-center px-6">
-            {/* Logo Central */}
-            <div className="flex items-center gap-3 mb-12">
-                <Zap className="w-10 h-10 text-neon-orange" />
-                <h1 className="text-3xl font-bold text-white uppercase tracking-tighter">
-                    Vibecode Manager
+        <main className="flex min-h-screen flex-col items-center justify-center p-4">
+            {/* Título com Glow Laranja Sutil */}
+            <div className="mb-16 text-center space-y-2">
+                <h1 className="text-5xl font-bold tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-zinc-400 drop-shadow-[0_0_25px_rgba(255,100,0,0.2)]">
+                    VibeCode Manager
                 </h1>
-            </div>
-
-            {/* Card de Login */}
-            <div className="w-full max-w-md">
-                {/* Título */}
-                <h2 className="text-xl text-center text-gray-300 mb-8 font-medium">
-                    Gerencie seus projetos de vibecoding
-                </h2>
-
-                {/* Botão de Login */}
-                <form action={signInWithGitHub}>
-                    <button
-                        type="submit"
-                        className="btn-neon-glow w-full py-4 text-lg rounded-lg group"
-                    >
-                        <span className="flex items-center justify-center gap-2">
-                            <svg className="h-5 w-5 fill-current" viewBox="0 0 24 24">
-                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                            </svg>
-                            Entrar com GitHub
-                        </span>
-                    </button>
-                </form>
-
-                {/* Texto informativo */}
-                <p className="text-gray-500 text-sm text-center mt-6">
-                    Conecte sua conta do GitHub para começar
+                <p className="text-zinc-500 uppercase tracking-widest text-sm">
+                    Painel de Controle de Projetos
                 </p>
             </div>
-        </div>
+
+            {/* Botão Centralizado (Estilo da Imagem) */}
+            <div className="w-full max-w-md flex flex-col items-center gap-12">
+                <div className="w-full h-px bg-gradient-to-r from-transparent via-orange-900/30 to-transparent" />
+
+                <NeonButton onClick={handleLogin} variant="large">
+                    Entrar com GitHub
+                </NeonButton>
+
+                <div className="w-full h-px bg-gradient-to-r from-transparent via-orange-900/30 to-transparent" />
+            </div>
+
+            {/* Footer Visual (Os ícones circulares da imagem podem ser adicionados depois, vamos focar no botão principal primeiro) */}
+        </main>
     );
 }
