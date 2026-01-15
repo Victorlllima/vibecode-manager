@@ -1,119 +1,106 @@
-@import "tailwindcss";
-@import "tw-animate-css";
-
-@custom-variant dark (&:is(.dark *));
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-  --color-sidebar-ring: var(--sidebar-ring);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar: var(--sidebar);
-  --color-chart-5: var(--chart-5);
-  --color-chart-4: var(--chart-4);
-  --color-chart-3: var(--chart-3);
-  --color-chart-2: var(--chart-2);
-  --color-chart-1: var(--chart-1);
-  --color-ring: var(--ring);
-  --color-input: var(--input);
-  --color-border: var(--border);
-  --color-destructive: var(--destructive);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-accent: var(--accent);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-muted: var(--muted);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-secondary: var(--secondary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-primary: var(--primary);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-popover: var(--popover);
-  --color-card-foreground: var(--card-foreground);
-  --color-card: var(--card);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-  --radius-2xl: calc(var(--radius) + 8px);
-  --radius-3xl: calc(var(--radius) + 12px);
-  --radius-4xl: calc(var(--radius) + 16px);
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 @layer base {
   :root {
-    /* Base - Blackpiano Quente */
-    --background: 240 5% 4%; /* #0B0B0C - Blackpiano */
-    --foreground: 0 0% 95%;
+    /* --- CORES BASE (RedPro High Contrast) --- */
 
-    /* UI Elements - Dark Tech */
-    --card: 240 4% 6%; /* #0E0E11 */
-    --card-foreground: 0 0% 95%;
-    --popover: 240 4% 6%;
-    --popover-foreground: 0 0% 95%;
+    /* Fundo: Preto Profundo (não preto absoluto, mas quase) */
+    --background: 240 10% 4%;
+    /* #09090b */
 
-    /* Primary - RedPro Gradient Logic (Definido em classes, base aqui) */
-    --primary: 345 80% 50%; /* Vermelho base */
+    /* Texto: Branco Puro para legibilidade máxima */
+    --foreground: 0 0% 100%;
+    /* #ffffff */
+
+    /* Cards: Um tom levemente mais claro que o fundo para separar */
+    --card: 240 10% 7%;
+    /* #121215 */
+    --card-foreground: 0 0% 100%;
+
+    --popover: 240 10% 7%;
+    --popover-foreground: 0 0% 100%;
+
+    /* Primária: Vermelho Carmim Neon */
+    --primary: 346 87% 43%;
+    /* #cd0b2f */
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 240 4% 10%;
-    --secondary-foreground: 0 0% 98%;
+    /* Muted: Para textos secundários (cinza claro, não escuro) */
+    --muted: 240 5% 20%;
+    --muted-foreground: 240 5% 65%;
+    /* Cinza médio legível */
 
-    --muted: 240 4% 10%;
-    --muted-foreground: 240 5% 60%;
-
-    --accent: 345 90% 60%; /* Vermelho Acento */
+    --accent: 346 87% 43%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 240 4% 12%; /* Bordas quase invisíveis */
-    --input: 240 4% 12%;
-    --ring: 345 80% 50%;
-    
-    --radius: 0.75rem;
-  }
+    /* Bordas: Sutis, mas visíveis */
+    --border: 240 5% 15%;
+    --input: 240 5% 15%;
+    --ring: 346 87% 43%;
 
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground font-sans antialiased;
-    /* Sensação de profundidade */
-    background-image: radial-gradient(circle at 50% 0%, rgba(255, 77, 90, 0.03), transparent 40%);
+    --radius: 0.5rem;
   }
 }
 
-/* REDPRO COMPONENT CLASSES */
-@layer components {
-  /* Botão Lâmina de Luz */
-  .btn-blade {
-    @apply h-10 px-8 rounded-full font-medium text-white transition-all duration-300;
-    background: linear-gradient(90deg, #B11226 0%, #FF4D5A 100%);
-    box-shadow: 0 0 10px rgba(177, 18, 38, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-  }
-  
-  .btn-blade:hover {
-    @apply brightness-110;
-    box-shadow: 0 0 20px rgba(255, 77, 90, 0.4); /* Neon Executivo */
-    border-color: rgba(255, 255, 255, 0.3);
+@layer base {
+  * {
+    @apply border-border;
   }
 
-  /* Card Tech */
-  .card-tech {
-    @apply bg-card border border-white/5 shadow-xl shadow-black/40 rounded-xl;
+  body {
+    /* Aplica as variáveis convertendo para cor utilizável */
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+
+    /* GRADIENTE DE FUNDO FORTE (RedPro Atmosphere) */
+    /* Aumentei a opacidade de 0.03 para 0.15 e o tamanho */
+    background-image:
+      radial-gradient(circle at 50% 0%, hsl(346, 87%, 43%, 0.15) 0%, transparent 60%),
+      linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);
+
+    background-attachment: fixed;
+    /* O gradiente fica fixo ao rolar */
+    min-height: 100vh;
   }
-  
-  /* Texto de Destaque */
-  .text-glow {
-    text-shadow: 0 0 20px rgba(255, 77, 90, 0.5);
+}
+
+/* --- COMPONENTES VISUAIS --- */
+@layer components {
+
+  /* Botão Lâmina de Luz (Corrigido para ser visível) */
+  .btn-blade {
+    @apply relative overflow-hidden rounded-full px-8 py-2 font-bold text-white transition-all duration-300;
+    background: linear-gradient(90deg, #B11226 0%, #FF4D5A 100%);
+    box-shadow: 0 0 15px rgba(177, 18, 38, 0.4);
+    /* Glow inicial mais forte */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .btn-blade:hover {
+    @apply transform scale-105;
+    box-shadow: 0 0 30px rgba(255, 77, 90, 0.6);
+    /* Glow intenso no hover */
+    border-color: rgba(255, 255, 255, 0.6);
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+  }
+
+  /* Card Tech (Com separação visual clara) */
+  .card-tech {
+    @apply rounded-xl border border-white/10 transition-all duration-300;
+    background-color: hsl(var(--card));
+    /* Usa a cor do card explicitamente */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  }
+
+  .card-tech:hover {
+    border-color: rgba(255, 77, 90, 0.3);
+    /* Borda vermelha sutil no hover */
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7);
+    transform: translateY(-2px);
   }
 }
