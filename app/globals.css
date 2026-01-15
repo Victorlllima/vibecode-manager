@@ -5,16 +5,11 @@
 @layer base {
   :root {
     /* --- CORES BASE (RedPro High Contrast) --- */
-
-    /* Fundo: Preto Profundo (não preto absoluto, mas quase) */
     --background: 240 10% 4%;
     /* #09090b */
-
-    /* Texto: Branco Puro para legibilidade máxima */
     --foreground: 0 0% 100%;
     /* #ffffff */
 
-    /* Cards: Um tom levemente mais claro que o fundo para separar */
     --card: 240 10% 7%;
     /* #121215 */
     --card-foreground: 0 0% 100%;
@@ -22,15 +17,12 @@
     --popover: 240 10% 7%;
     --popover-foreground: 0 0% 100%;
 
-    /* Primária: Vermelho Carmim Neon */
     --primary: 346 87% 43%;
     /* #cd0b2f */
     --primary-foreground: 0 0% 100%;
 
-    /* Muted: Para textos secundários (cinza claro, não escuro) */
     --muted: 240 5% 20%;
     --muted-foreground: 240 5% 65%;
-    /* Cinza médio legível */
 
     --accent: 346 87% 43%;
     --accent-foreground: 0 0% 100%;
@@ -38,7 +30,6 @@
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 100%;
 
-    /* Bordas: Sutis, mas visíveis */
     --border: 240 5% 15%;
     --input: 240 5% 15%;
     --ring: 346 87% 43%;
@@ -50,58 +41,72 @@
 @layer base {
   * {
     border-color: hsl(var(--border));
-    /* Uso direto para evitar erro de build */
   }
 
   body {
-    /* Aplica as variáveis convertendo para cor utilizável */
     background-color: hsl(var(--background));
     color: hsl(var(--foreground));
 
-    /* GRADIENTE DE FUNDO FORTE (RedPro Atmosphere) */
-    /* Aumentei a opacidade de 0.03 para 0.15 e o tamanho */
+    /* GRADIENTE DE FUNDO ATMOSFÉRICO */
     background-image:
       radial-gradient(circle at 50% 0%, hsl(346, 87%, 43%, 0.15) 0%, transparent 60%),
       linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);
-
     background-attachment: fixed;
-    /* O gradiente fica fixo ao rolar */
     min-height: 100vh;
   }
 }
 
-/* --- COMPONENTES VISUAIS --- */
+/* --- COMPONENTES VISUAIS (CSS PURO - SEM @APPLY) --- */
 @layer components {
 
-  /* Botão Lâmina de Luz (Corrigido para ser visível) */
+  /* Botão Lâmina de Luz */
   .btn-blade {
-    @apply relative overflow-hidden rounded-full px-8 py-2 font-bold text-white transition-all duration-300;
+    position: relative;
+    overflow: hidden;
+    border-radius: 9999px;
+    /* rounded-full */
+    padding: 0.5rem 2rem;
+    /* py-2 px-8 */
+    font-weight: 700;
+    /* font-bold */
+    color: white;
+    transition: all 0.3s;
+
+    /* Visual */
     background: linear-gradient(90deg, #B11226 0%, #FF4D5A 100%);
     box-shadow: 0 0 15px rgba(177, 18, 38, 0.4);
-    /* Glow inicial mais forte */
     border: 1px solid rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .btn-blade:hover {
-    @apply transform scale-105;
+    transform: scale(1.05);
     box-shadow: 0 0 30px rgba(255, 77, 90, 0.6);
-    /* Glow intenso no hover */
     border-color: rgba(255, 255, 255, 0.6);
     text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
   }
 
-  /* Card Tech (Com separação visual clara) */
+  /* Card Tech */
   .card-tech {
-    @apply rounded-xl border border-white/10 transition-all duration-300;
+    border-radius: 0.75rem;
+    /* rounded-xl */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s;
     background-color: hsl(var(--card));
-    /* Usa a cor do card explicitamente */
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
   }
 
   .card-tech:hover {
     border-color: rgba(255, 77, 90, 0.3);
-    /* Borda vermelha sutil no hover */
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7);
     transform: translateY(-2px);
+  }
+
+  /* Utilitário de Texto Glow */
+  .text-glow {
+    text-shadow: 0 0 20px rgba(255, 77, 90, 0.5);
   }
 }
