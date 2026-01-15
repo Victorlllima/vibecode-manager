@@ -48,93 +48,96 @@ export async function importProject(repoId: number, repoFullName: string, repoUr
 
     // 3. Salvar no Supabase
     // Criar Projeto
-    const { data: project, error: projectError } = await supabase
-        .from('projects')
-        .insert({
-            user_id: session.user.id,
-            name: repo, // Nome inicial = nome do repo
-            description: repoDescription,
-            github_repo_id: repoId,
-            github_repo_full_name: repoFullName,
-            github_repo_url: repoUrl,
-            status: 'active'
-        })
-        .select()
-        .single();
-
-    if (projectError) throw new Error(`Erro ao criar projeto: ${projectError.message}`);
-
-    // --- LÓGICA DE WEBHOOK ---
+    let success = false;
     try {
-        const appUrl = process.env.NEXT_PUBLIC_APP_URL;
-        const webhookSecret = process.env.GITHUB_WEBHOOK_SECRET;
-
-        if (appUrl && webhookSecret) {
-            const webhookUrl = `${appUrl}/api/webhooks/github`;
-
-            // Verifica se já existe webhook para esta URL para não duplicar
-            const { data: existingHooks } = await octokit.rest.repos.listWebhooks({
-                owner,
-                repo,
-            });
-
-            // @ts-ignore
-            const hookExists = existingHooks.find(h => h.config.url === webhookUrl);
-
-            if (!hookExists) {
-                await octokit.rest.repos.createWebhook({
-                    owner,
-                    repo,
-                    name: 'web',
-                    active: true,
-                    events: ['push'],
-                    config: {
-                        url: webhookUrl,
-                        content_type: 'json',
-                        secret: webhookSecret,
-                        insecure_ssl: '0',
-                    },
-                });
-                console.log(`Webhook criado para ${repoFullName}`);
-            }
-        }
-    } catch (webhookError) {
-        console.error("Aviso: Não foi possível criar o webhook automaticamente.", webhookError);
-        // Não falha a importação, apenas avisa
-    }
-    // --- FIM LÓGICA DE WEBHOOK ---
-
-    // Criar Fases e Subtasks
-    for (const [index, phase] of parsedData.phases.entries()) {
-        const { data: phaseData, error: phaseError } = await supabase
-            .from('phases')
+        const { data: project, error: projectError } = await supabase
+            .from('projects')
             .insert({
-                project_id: project.id,
-                title: phase.title,
-                order_index: index,
-                status: phase.status,
-                subtasks_total: phase.subtasks.length,
-                subtasks_completed: phase.subtasks.filter(t => t.isCompleted).length,
-                completion_percentage: phase.subtasks.length > 0
-                    ? Math.round((phase.subtasks.filter(t => t.isCompleted).length / phase.subtasks.length) * 100)
-                    : 0
+                user_id: session.user.id,
+                name: repo,
+                description: repoDescription,
+                github_repo_id: repoId,
+                github_repo_full_name: repoFullName,
+                github_repo_url: repoUrl,
+                status: 'active'
             })
             .select()
             .single();
 
-        if (phaseError) continue;
+        if (projectError) throw new Error(`Erro ao criar projeto: ${projectError.message}`);
 
-        if (phase.subtasks.length > 0) {
-            const subtasksToInsert = phase.subtasks.map(t => ({
-                phase_id: phaseData.id,
-                title: t.title,
-                is_completed: t.isCompleted
-            }));
+        // --- LÓGICA DE WEBHOOK ---
+        try {
+            const appUrl = process.env.NEXT_PUBLIC_APP_URL;
+            const webhookSecret = process.env.GITHUB_WEBHOOK_SECRET;
 
-            await supabase.from('subtasks').insert(subtasksToInsert);
+            if (appUrl && webhookSecret) {
+                const webhookUrl = `${appUrl}/api/webhooks/github`;
+                const { data: existingHooks } = await octokit.rest.repos.listWebhooks({
+                    owner,
+                    repo,
+                });
+
+                // @ts-ignore
+                const hookExists = existingHooks.find(h => h.config.url === webhookUrl);
+
+                if (!hookExists) {
+                    await octokit.rest.repos.createWebhook({
+                        owner,
+                        repo,
+                        name: 'web',
+                        active: true,
+                        events: ['push'],
+                        config: {
+                            url: webhookUrl,
+                            content_type: 'json',
+                            secret: webhookSecret,
+                            insecure_ssl: '0',
+                        },
+                    });
+                }
+            }
+        } catch (webhookError) {
+            console.error("Aviso: Não foi possível criar o webhook automaticamente.", webhookError);
         }
+
+        // Criar Fases e Subtasks
+        for (const [index, phase] of parsedData.phases.entries()) {
+            const { data: phaseData, error: phaseError } = await supabase
+                .from('phases')
+                .insert({
+                    project_id: project.id,
+                    title: phase.title,
+                    order_index: index,
+                    status: phase.status,
+                    subtasks_total: phase.subtasks.length,
+                    subtasks_completed: phase.subtasks.filter(t => t.isCompleted).length,
+                    completion_percentage: phase.subtasks.length > 0
+                        ? Math.round((phase.subtasks.filter(t => t.isCompleted).length / phase.subtasks.length) * 100)
+                        : 0
+                })
+                .select()
+                .single();
+
+            if (phaseError) continue;
+
+            if (phase.subtasks.length > 0) {
+                const subtasksToInsert = phase.subtasks.map(t => ({
+                    phase_id: phaseData.id,
+                    title: t.title,
+                    is_completed: t.isCompleted
+                }));
+
+                await supabase.from('subtasks').insert(subtasksToInsert);
+            }
+        }
+        success = true;
+    } catch (error) {
+        console.error("Erro na importação:", error);
+        throw error;
     }
 
-    // 4. Redirecionar para o dashboard
-    redirect('/dashboard');
+    if (success) {
+        redirect('/dashboard');
+    }
 }
