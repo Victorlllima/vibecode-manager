@@ -38,11 +38,11 @@ export default async function DashboardPage() {
                         O VibeCode Manager ajuda você a terminar o que começou.
                         Importe seu primeiro repositório e transforme seu asbuilt.md em um roadmap vivo.
                     </p>
-                    <Link href="/projects/add">
-                        <Button size="lg" className="mt-4">
-                            <Plus className="mr-2 h-4 w-4" />
+                    <Link href="/projects/add" className="group flex flex-col items-center gap-1 mt-4">
+                        <span className="text-sm font-bold uppercase tracking-widest text-white drop-shadow-md">
                             Importar Projeto
-                        </Button>
+                        </span>
+                        <div className="h-1 w-32 rounded-full bg-gradient-to-r from-orange-900 via-orange-400 to-orange-900 shadow-[0_0_15px_rgba(255,140,0,0.8)] transition-all group-hover:w-36 group-hover:shadow-[0_0_25px_rgba(255,165,0,1)]"></div>
                     </Link>
                 </div>
             </div>
@@ -54,11 +54,11 @@ export default async function DashboardPage() {
         <div className="space-y-6">
             <div className="flex items-center justify-between">
                 <h1 className="text-3xl font-bold tracking-tight">Meus Projetos</h1>
-                <Link href="/projects/add">
-                    <Button>
-                        <Plus className="mr-2 h-4 w-4" />
+                <Link href="/projects/add" className="group flex flex-col items-center gap-1">
+                    <span className="text-xs font-bold uppercase tracking-widest text-white drop-shadow-md">
                         Novo Projeto
-                    </Button>
+                    </span>
+                    <div className="h-1 w-24 rounded-full bg-gradient-to-r from-orange-900 via-orange-400 to-orange-900 shadow-[0_0_15px_rgba(255,140,0,0.8)] transition-all group-hover:w-28 group-hover:shadow-[0_0_25px_rgba(255,165,0,1)]"></div>
                 </Link>
             </div>
 

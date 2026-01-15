@@ -50,10 +50,15 @@ export function RepoCard({ repo }: RepoCardProps) {
                 <button
                     onClick={handleConnect}
                     disabled={loading}
-                    className="w-full mt-2 rounded-full bg-gradient-to-r from-[#B11226] to-[#FF4D5A] px-4 py-2 text-sm font-bold text-white shadow-[0_0_15px_rgba(177,18,38,0.4)] transition-all hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(255,77,90,0.6)] disabled:opacity-50 flex items-center justify-center gap-2"
+                    className="group mt-2 flex w-full flex-col items-center justify-center gap-2 bg-transparent disabled:opacity-50"
                 >
-                    {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : null}
-                    {loading ? "CONECTANDO..." : "INICIAR CONTROLE"}
+                    <span className="text-sm font-bold uppercase tracking-[0.2em] text-white drop-shadow-[0_0_10px_rgba(255,165,0,0.5)] transition-all group-hover:text-orange-100 flex items-center gap-2">
+                        {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : null}
+                        {loading ? 'Conectando...' : 'Iniciar Controle'}
+                    </span>
+
+                    {/* Lâmina Laranja */}
+                    <div className="h-1 w-full rounded-full bg-gradient-to-r from-orange-900 via-orange-500 to-orange-900 shadow-[0_0_15px_rgba(255,140,0,0.6)] transition-all duration-300 group-hover:h-1.5 group-hover:via-orange-300 group-hover:shadow-[0_0_25px_rgba(255,165,0,0.8)]"></div>
                 </button>
             </CardContent>
         </Card>
