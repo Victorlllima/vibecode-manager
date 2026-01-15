@@ -1,0 +1,22 @@
+# VibeCode Manager
+
+SaaS para gestão de projetos Vibecoding com sincronização automática via GitHub.
+
+## Stack
+
+- Next.js 15 (App Router)
+- Supabase (PostgreSQL + Auth)
+- Vercel (Deploy)
+- TanStack Query + Zustand
+- Shadcn/ui + Tailwind CSS
+
+## Setup
+
+1. Clone o repositório
+2. Instale dependências: `npm install`
+3. Configure `.env.local` com credenciais do Supabase
+4. Execute: `npm run dev`
+
+## Documentação
+
+Veja `docs/asbuilt.md` para roadmap completo e documentação técnica.
