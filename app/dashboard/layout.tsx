@@ -1,55 +1,40 @@
-import { Zap } from "lucide-react";
-import Link from "next/link";
-import { createClient } from "@/lib/supabase/server";
-import { redirect } from "next/navigation";
+import { createClient } from '@/lib/supabase/server'
+import { redirect } from 'next/navigation'
+import { Button } from '@/components/ui/button'
 
 export default async function DashboardLayout({
     children,
 }: {
-    children: React.ReactNode;
+    children: React.ReactNode
 }) {
-    const supabase = await createClient();
-    const { data: { user } } = await supabase.auth.getUser();
+    const supabase = await createClient()
+
+    const {
+        data: { user },
+    } = await supabase.auth.getUser()
 
     if (!user) {
-        redirect("/login");
-    }
-
-    // Função de logout
-    async function signOut() {
-        "use server";
-        const supabase = await createClient();
-        await supabase.auth.signOut();
-        redirect("/");
+        redirect('/login')
     }
 
     return (
-        <div className="min-h-screen">
-            {/* ========== HEADER ========== */}
-            <header className="flex items-center justify-between px-6 py-4 border-b border-gray-800/50">
-                {/* Logo */}
-                <Link href="/dashboard" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-                    <Zap className="w-6 h-6 text-neon-orange" />
-                    <span className="text-white font-semibold text-lg">
-                        VibeCode Manager
+        <div className="min-h-screen bg-background">
+            <header className="sticky top-0 z-30 flex h-16 items-center gap-4 border-b bg-background px-6 shadow-sm">
+                <div className="flex items-center gap-2 font-bold text-xl">
+                    ⚡ VibeCode Manager
+                </div>
+                <div className="ml-auto flex items-center gap-4">
+                    <span className="text-sm text-muted-foreground hidden md:block">
+                        {user.user_metadata.user_name || user.email}
                     </span>
-                </Link>
-
-                {/* Botão Sair */}
-                <form action={signOut}>
-                    <button
-                        type="submit"
-                        className="btn-neon px-4 py-2 text-sm rounded hover:shadow-neon transition-shadow"
-                    >
-                        SAIR
-                    </button>
-                </form>
+                    <form action="/auth/signout" method="post">
+                        <Button variant="ghost" size="sm">Sair</Button>
+                    </form>
+                </div>
             </header>
-
-            {/* ========== CONTEÚDO ========== */}
-            <main className="px-6 py-8">
+            <main className="container mx-auto py-8 px-4">
                 {children}
             </main>
         </div>
-    );
+    )
 }

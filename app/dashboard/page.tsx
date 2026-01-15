@@ -1,8 +1,8 @@
 import Link from "next/link";
-import { Plus, FolderOpen } from "lucide-react";
+import { Plus } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import { ProjectCard } from "@/components/project-card";
-import { NeonButton } from "@/components/ui/neon-button";
+import { Button } from "@/components/ui/button";
 
 export default async function DashboardPage() {
     const supabase = await createClient();
@@ -32,47 +32,31 @@ export default async function DashboardPage() {
     }) || [];
 
     return (
-        <div>
-            {/* ========== HEADER DA PÁGINA ========== */}
-            <div className="flex items-center justify-between mb-8">
-                <h1 className="text-2xl font-bold text-white">
-                    Meus Projetos
-                </h1>
-
+        <div className="space-y-6">
+            <div className="flex items-center justify-between">
+                <h1 className="text-3xl font-bold tracking-tight">Meus Projetos</h1>
                 <Link href="/projects/add">
-                    <Link href="/projects/add">
-                        <NeonButton variant="small">
-                            <div className="flex items-center gap-2">
-                                <Plus className="w-4 h-4" />
-                                <span>NOVO PROJETO</span>
-                            </div>
-                        </NeonButton>
-                    </Link>
+                    <Button>
+                        <Plus className="mr-2 h-4 w-4" />
+                        Novo Projeto
+                    </Button>
                 </Link>
             </div>
 
-            {/* ========== LISTA DE PROJETOS ========== */}
             {projectsWithProgress.length === 0 ? (
-                /* Empty State */
-                <div className="flex flex-col items-center justify-center py-20">
-                    <div className="icon-neon w-20 h-20 mb-6">
-                        <FolderOpen className="w-10 h-10" />
+                <div className="flex h-[450px] shrink-0 items-center justify-center rounded-md border border-dashed">
+                    <div className="mx-auto flex max-w-[420px] flex-col items-center justify-center text-center">
+                        <h3 className="mt-4 text-lg font-semibold">Nenhum projeto encontrado</h3>
+                        <p className="mb-4 mt-2 text-sm text-muted-foreground">
+                            Você ainda não tem nenhum projeto. Comece importando um repositório.
+                        </p>
+                        <Link href="/projects/add">
+                            <Button>Importar Projeto</Button>
+                        </Link>
                     </div>
-                    <h2 className="text-xl font-semibold text-white mb-2">
-                        Nenhum projeto ainda
-                    </h2>
-                    <p className="text-gray-400 mb-6 text-center max-w-md">
-                        Conecte seu primeiro repositório do GitHub para começar a gerenciar seus projetos de vibecoding.
-                    </p>
-                    <Link href="/projects/add">
-                        <NeonButton variant="large">
-                            Conectar Repositório
-                        </NeonButton>
-                    </Link>
                 </div>
             ) : (
-                /* Grid de Projetos */
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                     {projectsWithProgress.map((project) => (
                         <ProjectCard key={project.id} project={project} />
                     ))}
