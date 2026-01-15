@@ -2,111 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Reset básico para garantir que variáveis do Shadcn funcionem se necessárias */
 @layer base {
   :root {
-    /* --- CORES BASE (RedPro High Contrast) --- */
-    --background: 240 10% 4%;
-    /* #09090b */
-    --foreground: 0 0% 100%;
-    /* #ffffff */
-
-    --card: 240 10% 7%;
-    /* #121215 */
-    --card-foreground: 0 0% 100%;
-
-    --popover: 240 10% 7%;
-    --popover-foreground: 0 0% 100%;
-
+    --background: 0 0% 3.5%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 3.5%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3.5%;
+    --popover-foreground: 0 0% 98%;
     --primary: 346 87% 43%;
-    /* #cd0b2f */
-    --primary-foreground: 0 0% 100%;
-
-    --muted: 240 5% 20%;
-    --muted-foreground: 240 5% 65%;
-
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
     --accent: 346 87% 43%;
-    --accent-foreground: 0 0% 100%;
-
+    --accent-foreground: 0 0% 98%;
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 100%;
-
-    --border: 240 5% 15%;
-    --input: 240 5% 15%;
-    --ring: 346 87% 43%;
-
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 340 4.5% 64%;
     --radius: 0.5rem;
-  }
-}
-
-@layer base {
-  * {
-    border-color: hsl(var(--border));
-  }
-
-  body {
-    background-color: hsl(var(--background));
-    color: hsl(var(--foreground));
-
-    /* GRADIENTE DE FUNDO ATMOSFÉRICO */
-    background-image:
-      radial-gradient(circle at 50% 0%, hsl(346, 87%, 43%, 0.15) 0%, transparent 60%),
-      linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);
-    background-attachment: fixed;
-    min-height: 100vh;
-  }
-}
-
-/* --- COMPONENTES VISUAIS (CSS PURO - SEM @APPLY) --- */
-@layer components {
-
-  /* Botão Lâmina de Luz */
-  .btn-blade {
-    position: relative;
-    overflow: hidden;
-    border-radius: 9999px;
-    /* rounded-full */
-    padding: 0.5rem 2rem;
-    /* py-2 px-8 */
-    font-weight: 700;
-    /* font-bold */
-    color: white;
-    transition: all 0.3s;
-
-    /* Visual */
-    background: linear-gradient(90deg, #B11226 0%, #FF4D5A 100%);
-    box-shadow: 0 0 15px rgba(177, 18, 38, 0.4);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .btn-blade:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 30px rgba(255, 77, 90, 0.6);
-    border-color: rgba(255, 255, 255, 0.6);
-    text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
-  }
-
-  /* Card Tech */
-  .card-tech {
-    border-radius: 0.75rem;
-    /* rounded-xl */
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    transition: all 0.3s;
-    background-color: hsl(var(--card));
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-  }
-
-  .card-tech:hover {
-    border-color: rgba(255, 77, 90, 0.3);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7);
-    transform: translateY(-2px);
-  }
-
-  /* Utilitário de Texto Glow */
-  .text-glow {
-    text-shadow: 0 0 20px rgba(255, 77, 90, 0.5);
   }
 }
