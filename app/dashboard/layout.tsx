@@ -1,6 +1,7 @@
 import { createClient } from '@/lib/supabase/server'
 import { redirect } from 'next/navigation'
 import { Button } from '@/components/ui/button'
+import { ThemeToggle } from '@/components/theme-toggle'
 
 export default async function DashboardLayout({
     children,
@@ -27,6 +28,7 @@ export default async function DashboardLayout({
                     <span className="text-sm text-muted-foreground hidden md:block">
                         {user.user_metadata.user_name || user.email}
                     </span>
+                    <ThemeToggle />
                     <form action="/auth/signout" method="post">
                         <Button variant="ghost" size="sm">Sair</Button>
                     </form>

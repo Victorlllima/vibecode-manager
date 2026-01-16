@@ -20,7 +20,7 @@ export default function LoginPage() {
         <main className="flex min-h-screen items-center justify-center p-4 bg-background">
             <Card className="w-full max-w-md">
                 <CardHeader className="text-center">
-                    <CardTitle className="text-2xl font-bold">Bem-vindo ao VibeCode</CardTitle>
+                    <CardTitle className="text-2xl font-bold">Bem-vindo ao Vibecode Manager</CardTitle>
                     <CardDescription>
                         Faça login para gerenciar seus projetos
                     </CardDescription>

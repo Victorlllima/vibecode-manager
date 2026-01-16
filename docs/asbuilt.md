@@ -137,7 +137,7 @@ SaaS pessoal para gestão centralizada de até 10 projetos de vibecoding simult�
 
 ### FASE 5: Polimento e UX
 **Status:** ✅ Completa  
-**Conclusão:** 100% (7/7 subtasks)
+**Conclusão:** 100% (8/8 subtasks)
 
 **Objetivo:** Melhorias visuais e experiência do usuário.
 
@@ -149,13 +149,17 @@ SaaS pessoal para gestão centralizada de até 10 projetos de vibecoding simult�
 - [x] Landing Page Informativa
 - [x] Empty states informativos (Dashboard e Notas)
 - [x] Confirmações de ação (deletar projeto, desconectar repo)
-- [ ] Dark mode (opcional)
+- [x] Dark mode (opcional)
 
 **Notas da Implementação:**
-*Nenhuma nota ainda - fase não iniciada*
+- Dark mode implementado com `next-themes`
+- Toggle de tema no header (Claro/Escuro/Sistema)
+- Variáveis CSS para ambos os temas em `globals.css`
+- Persistência da preferência via localStorage
 
 **Último trabalho realizado:**
-*Aguardando conclusão da FASE 4*
+- Implementação do Dark Mode com toggle no header
+- Data última sessão: 2026-01-16
 
 **Critério de Sucesso:** Sistema fluido, sem bugs, com feedback claro ao usuário em todas as ações.
 
