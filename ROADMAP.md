@@ -1,6 +1,6 @@
 # ROADMAP — RVM (RedPro Vibecoding Manager)
 > SaaS de gestão de projetos com IA, Telegram, CI/CD e agentes autônomos | Método S.H.A.R.K.
-> Atualizado: 2026-02-27
+> Atualizado: 2026-02-28
 
 ## Stack
 - **Frontend:** Next.js 16 + React 19 + TypeScript + Tailwind v4 + shadcn — porta 5000
@@ -64,16 +64,26 @@
 | 30 | ClaudeRemoteCard na aba Integrações (polling 30s) | done | 7 | Atlas |
 | 31 | Endpoints: /api/claude-remote/status, /register, /unregister | done | 7 | Atlas |
 
-## Fase 5 — Deploy v0.5.0 no Hetzner
+## Fase 5 — Deploy v0.5.0 no Hetzner (CONCLUÍDA)
 | # | Task | Status | Prioridade | Agente |
 |---|------|--------|------------|--------|
-| 32 | SCP e deploy: heartbeat-smart.js, telegram.js, server.js atualizados | pending | 10 | Atlas |
-| 33 | Executar migrate-v3.js no Hetzner (ci_builds table) | pending | 10 | Atlas |
-| 34 | pm2 restart rvm-api no Hetzner | pending | 9 | Atlas |
-| 35 | pm2 restart rvm-listener no Windows (local) | pending | 9 | Atlas |
-| 36 | Configurar crontab no Hetzner: heartbeat-smart às 9h e 14h | pending | 8 | Atlas |
+| 32 | SCP e deploy: heartbeat-smart.js, telegram.js, server.js atualizados | done | 10 | Atlas |
+| 33 | Executar migrate-v3.js no Hetzner (ci_builds table) | done | 10 | Atlas |
+| 34 | pm2 restart rvm-api no Hetzner | done | 9 | Atlas |
+| 35 | pm2 restart rvm-listener no Windows (local) | done | 9 | Atlas |
+| 36 | Configurar crontab no Hetzner: heartbeat-smart às 9h e 14h | done | 8 | Atlas |
 | 37 | Testar login GitHub OAuth end-to-end | pending | 8 | Kerberos |
 | 38 | Configurar webhooks GitHub Actions nos repos satélite | pending | 7 | Kerberos |
+
+## Fase 5.1 — Infraestrutura & Gitflow (CONCLUÍDA)
+| # | Task | Status | Prioridade | Agente |
+|---|------|--------|------------|--------|
+| 43 | git init + GitHub + branches dev/hml em todos os 15 projetos | done | 9 | Atlas |
+| 44 | github_url atualizado no banco para todos os projetos | done | 9 | Atlas |
+| 45 | Time Machine com dados reais de commits | done | 9 | Atlas |
+| 46 | Vercel configurado: red-pump, hubcontrol, flowdesk, vitalis, nossocrm | done | 8 | Atlas |
+| 47 | Silenciar alertas desnecessários Telegram (self-healing + heartbeat-v2) | done | 8 | Hades |
+| 48 | PATCH /api/projects/:id endpoint para atualizar campos via API | done | 7 | Atlas |
 
 ## Fase 6 — Wizard Onboarding & Multi-Account
 | # | Task | Status | Prioridade | Agente |
@@ -82,6 +92,9 @@
 | 40 | Tables: project_shark_state + shark_handoffs | pending | 7 | Atlas |
 | 41 | Registrar projetos satélite com heartbeat automático | pending | 7 | Atlas |
 | 42 | Dashboard móvel PWA otimizado para celular | pending | 6 | Atlas |
+| 49 | Importar ROADMAP.md dos projetos para o banco RVM (com project_id) | pending | 8 | Atlas |
+| 50 | Testar GitHub OAuth end-to-end | pending | 8 | Kerberos |
+| 51 | Configurar webhooks GitHub Actions nos repos satélite | pending | 7 | Kerberos |
 
 ## Projetos Satélite Registrados
 | ID | Projeto | Status |
