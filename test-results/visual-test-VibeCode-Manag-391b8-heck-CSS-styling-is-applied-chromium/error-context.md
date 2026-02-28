@@ -1,0 +1,48 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - img "Team member 1" [ref=e7]
+          - generic [ref=e8]: JD
+        - generic [ref=e9]:
+          - img "Team member 2" [ref=e10]
+          - generic [ref=e11]: HJ
+        - generic [ref=e12]:
+          - img "Team member 3" [ref=e13]
+          - generic [ref=e14]: PI
+        - generic [ref=e15]:
+          - img "Team member 4" [ref=e16]
+          - generic [ref=e17]: KD
+        - generic [ref=e18]:
+          - img "Team member 5" [ref=e19]
+          - generic [ref=e20]: LD
+      - generic [ref=e22]:
+        - generic [ref=e23]: $5M+IN CLIENT REVENUE GENERATED🚀
+        - generic [ref=e24]: 200+BUSINESSES LAUNCHED📈
+        - generic [ref=e25]: $500K+SAVED IN OPERATIONAL COSTS💰
+        - generic [ref=e26]: $5M+IN CLIENT REVENUE GENERATED🚀
+        - generic [ref=e27]: 200+BUSINESSES LAUNCHED📈
+        - generic [ref=e28]: $500K+SAVED IN OPERATIONAL COSTS💰
+        - generic [ref=e29]: $5M+IN CLIENT REVENUE GENERATED🚀
+        - generic [ref=e30]: 200+BUSINESSES LAUNCHED📈
+        - generic [ref=e31]: $500K+SAVED IN OPERATIONAL COSTS💰
+        - generic [ref=e32]: $5M+IN CLIENT REVENUE GENERATED🚀
+        - generic [ref=e33]: 200+BUSINESSES LAUNCHED📈
+        - generic [ref=e34]: $500K+SAVED IN OPERATIONAL COSTS💰
+    - generic [ref=e36]:
+      - generic [ref=e37]:
+        - heading "We think, you grow — that's the deal" [level=1] [ref=e38]:
+          - text: We think, you grow
+          - text: — that's the deal
+        - button "Get Template" [ref=e39]:
+          - text: Get Template
+          - img [ref=e41]
+      - paragraph [ref=e44]: We take your big ideas and turn them into clear, winning strategies. From setting up your company to scaling it worldwide, we're here every step of the way.
+  - button "Open Next.js Dev Tools" [ref=e50] [cursor=pointer]:
+    - img [ref=e51]
+  - alert [ref=e54]
+```

@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+@theme inline {
+  --animate-marquee: marquee var(--duration) infinite linear;
+  --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
+
+  --color-background: hsl(0 0% 4%);
+  --color-foreground: hsl(0 0% 95%);
+  --color-card: hsl(0 0% 6%);
+  --color-card-foreground: hsl(0 0% 95%);
+  --color-primary: hsl(84 80% 55%);
+  --color-primary-foreground: hsl(0 0% 5%);
+  --color-secondary: hsl(0 0% 12%);
+  --color-secondary-foreground: hsl(0 0% 90%);
+  --color-muted: hsl(0 0% 12%);
+  --color-muted-foreground: hsl(0 0% 50%);
+  --color-destructive: hsl(0 80% 50%);
+  --color-border: hsl(0 0% 14%);
+  --color-input: hsl(0 0% 14%);
+  --color-ring: hsl(84 80% 55%);
+  --radius-lg: 0.5rem;
+  --radius-md: 0.375rem;
+  --radius-sm: 0.25rem;
+}
+
+:root {
+  --primary: oklch(0.95 0.16 118.89);
+}
+
+.dark {
+  --primary: oklch(0.95 0.16 118.89);
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(calc(-100% - var(--gap))); }
+}
+
+@keyframes marquee-vertical {
+  from { transform: translateY(0); }
+  to { transform: translateY(calc(-100% - var(--gap))); }
+}
