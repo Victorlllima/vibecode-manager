@@ -8,3 +8,7 @@ node_modules/
 dist/
 build/
 .vercel/
+tests/screenshots/
+*.png
+*.jpg
+*.jpeg
